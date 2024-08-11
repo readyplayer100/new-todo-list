@@ -3,11 +3,11 @@ import { Button } from 'antd';
 import { DeleteOutlined } from '@ant-design/icons';
 
   const TaskList = (props) => {
-    // 親コンポーネントから受け取った関数を使って、内容を更新
+    // 使用从父组件接收的函数来更新内容
     const onClickDelete = (index) => {
         props.onClickDelete(index);
     };
-    // 親コンポーネントから受け取った関数を使って、内容を更新
+    // 使用从父组件接收的函数来更新内容
     const onClickSwitch = (index) => {
         props.onClickSwitch(index);
     };

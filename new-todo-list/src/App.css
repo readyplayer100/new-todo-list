@@ -201,18 +201,6 @@ button {
   margin-top: 10px;
 }
 
-.loginBtn {
-  margin-left: 0;
-}
-
-.registerBtn {
-  margin-left: 10px;
-}
-
-.logoutBtn {
-  margin-left: 20px;
-}
-
 span.loginTitle {
   font-size: 30px;
   display: block;
@@ -336,6 +324,27 @@ input[type="date"] {
   color: #fca6a6; 
 }
 
+.deadline-col {
+  margin: 0 auto;
+}
+
+.deadline-input {
+  width: 100%;
+}
+
+.space1 {
+  margin-bottom: 10px;
+}
+
+.buttons-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.button-space {
+  width: 20px;
+}
+
 /* App.jsx */
 .todo-header {
   font-family: Arial, sans-serif; 
@@ -344,7 +353,6 @@ input[type="date"] {
   word-spacing: 10px;
   color: #ecc2e7;
   font-style: italic;
-  margin-top: 10px;
 }
 
 .link-container {

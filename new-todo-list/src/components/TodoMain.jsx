@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Card, Input, Button, Radio, message, Row, Col } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import TaskList from "./TodoList.jsx";
-import { UploadOutlined, DownloadOutlined } from '@ant-design/icons';
+import { UploadOutlined } from '@ant-design/icons';
 
 export const TodoMain = () => {
   // todolist
@@ -188,7 +188,7 @@ export const TodoMain = () => {
 
   };
 
-  // 切换状态
+  // 切换status
   const onClickSwitch = (index) => {
 
     var selStatus = filteredTodoList[index].status;
@@ -283,10 +283,10 @@ export const TodoMain = () => {
 
         if (data.userId != null) {
           setNewTodoList(data.allTodoList);
-          message.info("已加载列表");
+          message.info("List loaded.");
         } else {
           navigate('/');
-          setError('加载列表失败');
+          setError('Task could not loaded.');
         }
       })
       .catch(error => {
@@ -295,11 +295,11 @@ export const TodoMain = () => {
       });
 
   };
-  
+
 
   return (
     <Card title={<div className="card-header">
-      <span>In the middle of every difficulty lies opportunity. - Albert Einstein</span>
+      <span>Keep going.</span>
       <span>当前用户：{loginId}</span>
     </div>} className="todoCard">
       <div className="complete-area">
@@ -330,19 +330,16 @@ export const TodoMain = () => {
 
       <h2 className='enterDDL'>Select the deadline for your task.</h2>
       <Row justify="center" align="middle" gutter={16}>
-        {/* <Col span={8}>
-      <label htmlFor="end" style={{ fontSize: "16px", textAlign: 'right' }}>End date:</label>
-    </Col>  */}
-        <Col span={8} style={{ margin: '0 auto' }}>
-          <input type="date" id="end" name="work ddl" onChange={onChangeDeadLine} defaultValue={time} style={{ width: '100%' }} />
+        <Col span={8} className="deadline-col">
+          <input type="date" id="end" name="work ddl" onChange={onChangeDeadLine} defaultValue={time} className="deadline-input" />
         </Col>
       </Row>
 
       <div className='space1' />
-      <div style={{ display: 'flex', justifyContent: 'center' }}>
+      <div className="buttons-wrapper">
         <Row gutter={16}>
           <Button type="primary" onClick={onClickAdd}>CONFIRM</Button>
-          <div style={{ width: '20px' }}></div>
+          <div className="button-space"></div>
           <Button type="primary" shape="round" icon={<UploadOutlined />} onClick={onClickImport}>Load All</Button>
         </Row>
       </div>

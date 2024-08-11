@@ -1,7 +1,7 @@
 import '../App.css';
 import React, { useState, } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Form, Input, Button, Card, Row, Col } from 'antd';
+import { Form, Input, Button, Card } from 'antd';
 
 export const Login = () => {
   const [userId, setUserId] = useState("");
@@ -58,9 +58,6 @@ export const Login = () => {
   };
 
   return (
-    // <Row justify="center" align="middle" style={{ minHeight: '100vh' }}>
-    //   <Col span={8}>
-     //<div className="cardContainer">
       <Card title="LOGIN" className="card-login">
           <Form onFinish={handleSubmit}>
             <Form.Item label="USER ID" className='space20'>
@@ -90,10 +87,6 @@ export const Login = () => {
             </Form.Item>
           </Form>
         </Card>
-     // </div>
-
-    //   </Col>
-    // </Row>
   );
 };
 
