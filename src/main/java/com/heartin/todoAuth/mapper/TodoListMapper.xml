@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.heartin.todoAuth.mapper.TodoListMapper">
+  <select id="login" resultType="int">
+    SELECT LAST_INSERT_ID();
+    from  TodoList 
+   </select>
+
+  <insert id="insert" >
+    INSERT INTO
+        TodoList
+        (
+            userId,
+            comment,
+            ddl,
+            status
+        )
+        VALUES
+        (
+            #{userId},
+            #{comment},
+            #{ddl},
+            #{status}
+         )
+   </insert>
+ 
+   <select id="lastId" resultType="int">
+    select top 1 seq 
+           from todoList
+           order by seq desc
+   </select>
+
+   <select id="getAll" resultType="com.heartin.todoAuth.domain.TodoList">
+    select seq,userid,comment,ddl,status 
+           from todoList
+    <where> 
+           userid = #{userId}
+    </where> 
+           order by seq asc
+   </select>
+            
+   <delete id="delete" >
+    delete from TodoList
+      <where> 
+            seq = #{seq} 
+      </where> 
+   </delete>
+
+   <update id="update" >
+    update TodoList 
+      <set> 
+            status = #{status} 
+      </set> 
+      <where> 
+            seq = #{seq} 
+      </where> 
+   </update>
+   
+</mapper>

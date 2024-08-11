@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.heartin.todoAuth.mapper.UserInfoMapper">
+  <select id="login" resultType="com.heartin.todoAuth.domain.UserInfo">
+    select userId, password
+    from  UserInfo            
+    where userId = #{userId} and password = #{password} 
+   </select>
+   
+<select id="userCheck" resultType="com.heartin.todoAuth.domain.UserInfo">
+    select userId
+    from  UserInfo            
+    where userId = #{userId}
+   </select>
+   
+  <insert id="insertUserInfo" >
+    INSERT INTO
+        UserInfo
+        (
+            userId,
+            password
+        )
+        VALUES
+        (
+            #{userId},
+            #{password}
+         )
+   </insert>
+</mapper>
