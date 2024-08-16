@@ -4,7 +4,7 @@
   <select id="login" resultType="com.heartin.todoAuth.domain.UserInfo">
     select userId, password
     from  UserInfo            
-    where userId = #{userId} and password = #{password} 
+    where userId = #{userId}
    </select>
    
 <select id="userCheck" resultType="com.heartin.todoAuth.domain.UserInfo">

@@ -14,8 +14,8 @@ public class UserInfoService {
   private UserInfoMapper UserInfoMapper;
 
   @Transactional
-  public UserInfo login(String userId, String password) {
-    return UserInfoMapper.login(userId, password);
+  public UserInfo login(String userId) {
+    return UserInfoMapper.login(userId);
   }
 
   @Transactional

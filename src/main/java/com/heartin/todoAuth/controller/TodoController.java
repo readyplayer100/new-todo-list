@@ -15,6 +15,7 @@ import com.heartin.todoAuth.domain.TodoList;
 import com.heartin.todoAuth.domain.TodoListWithToken;
 import com.heartin.todoAuth.domain.UserInfo;
 import com.heartin.todoAuth.domain.UserToken;
+import com.heartin.todoAuth.service.AuthService;
 import com.heartin.todoAuth.service.TodoListService;
 import com.heartin.todoAuth.service.UserInfoService;
 
@@ -33,6 +34,9 @@ public class TodoController {
 	@Autowired
 	private TodoListService todoListService;
 	
+	@Autowired
+	private AuthService authService;
+	
 	
 //	@GetMapping("/**/{path:[^.]*}")
 //    public String any() {
@@ -43,13 +47,14 @@ public class TodoController {
     @ResponseBody
     public UserToken login(@RequestBody(required = false) UserInfo user) {
     	System.out.println("useid=" + user.getUserId() + " password=" + user.getPassword());
+    	System.out.println("encode password=" + authService.createEndocedPwd(user.getPassword()));
         
-        UserInfo loginUser  = userInfoService.login(user.getUserId(), user.getPassword());
+        UserInfo loginUser  = userInfoService.login(user.getUserId());
         
         UserToken userToken = new UserToken();
         JwtTokenUtil jwtTokenUtil = new JwtTokenUtil();
 
-        if (loginUser != null){
+        if (loginUser != null && authService.pwdMatch(user.getPassword(), loginUser.getPassword())){
             userToken.setUserId(user.getUserId());
             userToken.setToken(jwtTokenUtil.generateToken(user.getUserId()));
         }else {
@@ -143,6 +148,7 @@ public class TodoController {
 
         if (registerUser == null){
         	returnRegisterUser.setUserId(user.getUserId());
+        	user.setPassword(authService.createEndocedPwd(user.getPassword()));
         	userInfoService.insertUserInfo(user);
         }
         return returnRegisterUser;

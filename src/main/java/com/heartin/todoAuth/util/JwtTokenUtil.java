@@ -39,7 +39,8 @@ public class JwtTokenUtil {
                     .getSubject();
             return (userNameFromToken.equals(username) && !isTokenExpired(token));
         } catch (Exception ex) {
-            ex.printStackTrace();
+            //ex.printStackTrace();
+            System.out.println("JWT expired. " );
             // 验证出错时返回验证失败
             return false;
         }

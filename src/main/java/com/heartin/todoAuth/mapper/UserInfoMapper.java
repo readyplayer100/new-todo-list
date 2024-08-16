@@ -6,7 +6,7 @@ import com.heartin.todoAuth.domain.UserInfo;
 
 @Mapper
 public interface UserInfoMapper {
-  UserInfo login(String userId, String password);
+  UserInfo login(String userId);
   UserInfo userCheck(String userID);
   void insertUserInfo(UserInfo userInfo);
 }
